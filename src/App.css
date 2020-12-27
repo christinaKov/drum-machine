@@ -1,38 +1,143 @@
-.App {
-  text-align: center;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-.App-logo {
-  height: 40vmin;
+.App {
+  background: linear-gradient(150deg, #ff8177 0%, #ff867a 0%, #ff8c7f 21%, #f99185 48%, #cf556c 63%, #b12a5b 100%);
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.drum-machine {
+  width: 60%;
+  background: transparent;
+  border: 4px solid black;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 3%;
+  outline: none;
+  min-height: 60vh;
+}
+
+.drum-pads {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  width: 50%;
+}
+
+.drum-pad {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  width: 30%;
+  border: 1px solid black;
+  margin: 4px;
+  padding: 5%;
+  background-color: #cf556c;
+  border-radius: 3px;
+  cursor: pointer;
+  box-shadow: 4px 4px 5px -3px #000000;
+}
+.drum-pad.active {
+  transform: translateY(3px);
+}
+
+.drum-pad p {
   pointer-events: none;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.display {
+  width: 50%;
   display: flex;
   flex-direction: column;
-  align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  align-items: center;
 }
 
-.App-link {
-  color: #61dafb;
+.audio-name {
+  background-color: #cf556c;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 20px;
+  min-width: 40%;
+  height: 3rem;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.power-switch,
+.bank-switch {
+  text-align: center;
+}
+
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 34px;
+}
+
+.switch input {
+  display:none;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: black;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 26px;
+  width: 26px;
+  left: 30px;
+  bottom: 4px;
+  background-color: #cf556c;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+input:checked + .slider {
+  background-color: black;
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px black;
+}
+
+input:checked + .slider:before {
+  -webkit-transform: translateX(-26px);
+  -ms-transform: translateX(-26px);
+  transform: translateX(-26px);
+}
+
+.volume {
+  width: 50%;
+  margin: 10px;
+}
+
+.volume-slider {
+  -webkit-appearance: none;
+  width: 100%;
+  background: black;
+  cursor: pointer;
+}
+
+.volume-slider:focus {
+  outline: none;
 }
